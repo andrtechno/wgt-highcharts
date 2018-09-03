@@ -14,7 +14,7 @@
     ],
     "require": {
         "panix/engine": "*",
-        "bower-asset/highcharts" : "^6.0"
+        "bower-asset/highcharts" : ">=6"
     },
     "autoload": {
         "psr-4": {
