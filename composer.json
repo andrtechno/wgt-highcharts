@@ -1,0 +1,24 @@
+{
+    "name": "panix/wgt-hightcharts",
+    "description": "Widget Hightcharts",
+    "keywords": ["pixelion-cms", "extension", "widget", "hightcharts"],
+    "homepage": "https://github.com/andrtechno/wgt-hightcharts",
+    "type": "extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PIXELION CMS",
+            "email": "dev@pixelion.com.ua",
+            "homepage": "https://pixelion.com.ua"
+        }
+    ],
+    "require": {
+        "panix/engine": "*",
+        "bower-asset/highcharts-release": ">=6"
+    },
+    "autoload": {
+        "psr-4": {
+            "panix\\ext\\hightcharts\\": ""
+        }
+    }
+}
