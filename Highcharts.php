@@ -8,9 +8,10 @@ use panix\engine\Html;
 use panix\engine\widgets\highcharts\HighchartsAsset;
 /**
  * HighchartsWidget class file.
- * 
- * @author CORNER CMS development team <dev@corner-cms.com>
- * @version 6.0.3
+ *
+ * @author PIXELION CMS development team <dev@pixelion.com.ua>
+ * @link http://pixelion.com.ua PIXELION CMS
+ * @version 6.1.2
  * 
  */
 
@@ -49,8 +50,8 @@ class Highcharts extends \panix\engine\data\Widget {
         $defaultOptions = array(
             'credits' => array(
                 'enabled' => true,
-                'text' => 'CORNER CMS',
-                'href' => 'http://corner-cms.com',
+                'text' => 'PIXELION CMS',
+                'href' => 'https://pixelion.com.ua',
             ),
             'chart' => array('renderTo' => $this->id)
         );
