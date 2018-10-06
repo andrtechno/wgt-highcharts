@@ -72,10 +72,10 @@ class Highcharts extends Widget {
 
 
         // register additional scripts
-        $extension = YII_DEBUG ? '.src.js' : '.js';
-        foreach ($this->scripts as $script) {
-            $view->registerJsFile("{$bundle->baseUrl}/{$script}{$extension}");
-        }
+       // $extension = YII_DEBUG ? '.src.js' : '.js';
+       // foreach ($this->scripts as $script) {
+       //     $view->registerJsFile("{$bundle->baseUrl}/{$script}{$extension}");
+       // }
 
         // highcharts and highstock can't live on the same page
         if ($this->_baseScript === 'highstock') {
