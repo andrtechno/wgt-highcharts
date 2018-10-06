@@ -77,8 +77,8 @@ class Highcharts extends Widget
         $assetsUrl = $assetsPaths[1];
 
         $view->registerJsFile("{$assetsUrl}/highcharts.js");
-        $view->registerJsFile("{$assetsUrl}/modules/exporting.js");
-        $view->registerJsFile("{$assetsUrl}/modules/export-data.js");
+        //$view->registerJsFile("{$assetsUrl}/modules/exporting.js");
+       // $view->registerJsFile("{$assetsUrl}/modules/export-data.js");
         // highcharts and highstock can't live on the same page
         if ($this->_baseScript === 'highstock') {
             // $cs->scriptMap["highcharts{$extension}"] = "{$bundle->baseUrl}/highstock{$extension}";
