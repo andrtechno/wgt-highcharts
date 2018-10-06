@@ -52,7 +52,7 @@ class Highcharts extends Widget {
         $defaultOptions = array(
             'credits' => array(
                 'enabled' => true,
-                'text' => 'PIXELION CMS',
+                'text' => Yii::$app->name,
                 'href' => 'https://pixelion.com.ua',
             ),
             'chart' => array('renderTo' => $this->id)
