@@ -1,8 +1,8 @@
 {
-    "name": "panix/wgt-hightcharts",
-    "description": "Widget Hightcharts",
-    "keywords": ["pixelion-cms", "extension", "widget", "hightcharts"],
-    "homepage": "https://github.com/andrtechno/wgt-hightcharts",
+    "name": "panix/wgt-highcharts",
+    "description": "Widget highcharts",
+    "keywords": ["pixelion-cms", "extension", "widget", "highcharts"],
+    "homepage": "https://github.com/andrtechno/wgt-highcharts",
     "type": "extension",
     "license": "MIT",
     "authors": [
