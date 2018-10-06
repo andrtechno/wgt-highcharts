@@ -1,4 +1,5 @@
 <?php
+
 namespace panix\ext\highcharts;
 
 
@@ -7,17 +8,17 @@ use yii\helpers\Json;
 use panix\engine\Html;
 use panix\ext\highcharts\HighchartsAsset;
 use panix\engine\data\Widget;
-
+use yii\web\View;
 /**
  * HighchartsWidget class file.
  *
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  * @version 6.1.2
- * 
+ *
  */
-
-class Highcharts extends Widget {
+class Highcharts extends Widget
+{
 
     protected $_constr = 'chart';
     protected $_baseScript = 'highcharts';
@@ -31,7 +32,8 @@ class Highcharts extends Widget {
     /**
      * Renders the widget.
      */
-    public function run() {
+    public function run()
+    {
         if (isset($this->htmlOptions['id'])) {
             $this->id = $this->htmlOptions['id'];
         } else {
@@ -66,20 +68,20 @@ class Highcharts extends Widget {
     /**
      * Publishes and registers the necessary script files.
      */
-    protected function registerAssets() {
-            $view = Yii::$app->view;
-            $bundle = HighchartsAsset::register($view);
+    protected function registerAssets()
+    {
+        $view = Yii::$app->view;
+       // $bundle = HighchartsAsset::register($view);
 
+        $assetsPaths = Yii::$app->getAssetManager()->publish(Yii::getAlias('@bower/highcharts/'));
+        $assetsUrl = $assetsPaths[1];
 
-        // register additional scripts
-       // $extension = YII_DEBUG ? '.src.js' : '.js';
-       // foreach ($this->scripts as $script) {
-       //     $view->registerJsFile("{$bundle->baseUrl}/{$script}{$extension}");
-       // }
-
+        $view->registerJsFile("{$assetsUrl}/highcharts.js");
+        $view->registerJsFile("{$assetsUrl}/modules/exporting.js");
+        $view->registerJsFile("{$assetsUrl}/modules/export-data.js");
         // highcharts and highstock can't live on the same page
         if ($this->_baseScript === 'highstock') {
-        // $cs->scriptMap["highcharts{$extension}"] = "{$bundle->baseUrl}/highstock{$extension}";
+            // $cs->scriptMap["highcharts{$extension}"] = "{$bundle->baseUrl}/highstock{$extension}";
         }
 
         // prepare and register JavaScript code block
@@ -89,16 +91,16 @@ class Highcharts extends Widget {
         $key = __CLASS__ . '#' . $this->id;
         if (is_string($this->callback)) {
             $callbackScript = "function {$this->callback}(data) {{$js}}";
-            $view->registerJs($callbackScript, \yii\web\View::POS_END, $key);
-           // $cs->registerScript($key, $callbackScript, CClientScript::POS_END);
+            $view->registerJs($callbackScript, View::POS_END, $key);
+            // $cs->registerScript($key, $callbackScript, CClientScript::POS_END);
         } else {
-            $view->registerJs($js, \yii\web\View::POS_LOAD, $key);
+            $view->registerJs($js, View::POS_LOAD, $key);
 
         }
-         
-            //$view->registerJs('$("#menu-toggle").click(function (e) {
-            //     chart.reflow();
-           //});', \yii\web\View::POS_LOAD,$key.'resize');
+
+        //$view->registerJs('$("#menu-toggle").click(function (e) {
+        //     chart.reflow();
+        //});', View::POS_LOAD,$key.'resize');
     }
 
 }

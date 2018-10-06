@@ -8,12 +8,11 @@ class HighchartsAsset extends AssetBundle {
 
     //public $sourcePath = __DIR__ . '/assets';
     public $sourcePath = '@bower/highcharts/';
-    public $css = [
 
-    ];
     public $js = [
-        'highcharts.src.js',
-
+        'highcharts.js',
+        'modules/exporting.js',
+        'modules/export-data.js',
     ];
 
     /**
