@@ -1,11 +1,13 @@
 <?php
-namespace panix\engine\widgets\highcharts;
+namespace panix\ext\highcharts;
+
 
 use Yii;
 use yii\helpers\Json;
-
 use panix\engine\Html;
-use panix\engine\widgets\highcharts\HighchartsAsset;
+use panix\ext\highcharts\HighchartsAsset;
+use panix\engine\data\Widget;
+
 /**
  * HighchartsWidget class file.
  *
@@ -15,7 +17,7 @@ use panix\engine\widgets\highcharts\HighchartsAsset;
  * 
  */
 
-class Highcharts extends \panix\engine\data\Widget {
+class Highcharts extends Widget {
 
     protected $_constr = 'chart';
     protected $_baseScript = 'highcharts';

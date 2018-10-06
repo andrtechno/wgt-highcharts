@@ -1,6 +1,6 @@
 <?php
 
-namespace panix\engine\widgets\highcharts;
+namespace panix\ext\highcharts;
 
 use panix\engine\web\AssetBundle;
 
