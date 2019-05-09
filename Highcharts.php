@@ -2,7 +2,6 @@
 
 namespace panix\ext\highcharts;
 
-
 use Yii;
 use yii\helpers\Json;
 use panix\engine\Html;
@@ -46,7 +45,7 @@ class Highcharts extends Widget
         // check if options parameter is a json string
         if (is_string($this->options)) {
             if (!$this->options = Json::decode($this->options)) {
-                throw new Exception('The options parameter is not valid JSON.');
+                throw new \Exception('The options parameter is not valid JSON.');
             }
         }
 
