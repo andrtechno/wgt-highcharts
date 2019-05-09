@@ -5,9 +5,9 @@ namespace panix\ext\highcharts;
 use Yii;
 use yii\helpers\Json;
 use panix\engine\Html;
-use panix\ext\highcharts\HighchartsAsset;
 use panix\engine\data\Widget;
 use yii\web\View;
+
 /**
  * HighchartsWidget class file.
  *
@@ -22,10 +22,10 @@ class Highcharts extends Widget
     protected $_constr = 'chart';
     protected $_baseScript = 'highcharts';
     protected $_baseScript3D = 'highcharts-3d';
-    public $options = array();
-    public $htmlOptions = array();
-    public $setupOptions = array();
-    public $scripts = array();
+    public $options = [];
+    public $htmlOptions = [];
+    public $setupOptions = [];
+    public $scripts = [];
     public $callback = false;
 
     /**
@@ -33,6 +33,9 @@ class Highcharts extends Widget
      */
     public function run()
     {
+
+
+
         if (isset($this->htmlOptions['id'])) {
             $this->id = $this->htmlOptions['id'];
         } else {
@@ -60,24 +63,25 @@ class Highcharts extends Widget
         );
         $this->options = \yii\helpers\ArrayHelper::merge($defaultOptions, $this->options);
         array_unshift($this->scripts, $this->_baseScript);
-
         $this->registerAssets();
+
     }
 
-    /**
-     * Publishes and registers the necessary script files.
-     */
-    protected function registerAssets()
+    private function registerAssets()
     {
+        $key = __CLASS__ . '#' . $this->id;
         $view = Yii::$app->view;
-       // $bundle = HighchartsAsset::register($view);
+        $bundle = HighchartsAsset::register($view);
+        $assetsUrl = $bundle->baseUrl;
 
-        $assetsPaths = Yii::$app->getAssetManager()->publish(Yii::getAlias('@bower/highcharts/'));
-        $assetsUrl = $assetsPaths[1];
+        //  print_r($this->scripts);die;
 
-        $view->registerJsFile("{$assetsUrl}/highcharts.js");
-        //$view->registerJsFile("{$assetsUrl}/modules/exporting.js");
-       // $view->registerJsFile("{$assetsUrl}/modules/export-data.js");
+        if (in_array('modules/exporting', $this->scripts)) {
+            $view->registerJsFile($assetsUrl . "/modules/exporting.js", ['position' => View::POS_END,'depends' => 'panix\ext\highcharts\HighchartsAsset']);
+            $view->registerJsFile($assetsUrl . "/modules/export-data.js", ['position' => View::POS_END,'depends' => 'panix\ext\highcharts\HighchartsAsset']);
+
+        }
+
         // highcharts and highstock can't live on the same page
         if ($this->_baseScript === 'highstock') {
             // $cs->scriptMap["highcharts{$extension}"] = "{$bundle->baseUrl}/highstock{$extension}";
@@ -87,7 +91,7 @@ class Highcharts extends Widget
         $jsOptions = Json::encode($this->options);
         $setupOptions = Json::encode($this->setupOptions);
         $js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->_constr}($jsOptions);";
-        $key = __CLASS__ . '#' . $this->id;
+
         if (is_string($this->callback)) {
             $callbackScript = "function {$this->callback}(data) {{$js}}";
             $view->registerJs($callbackScript, View::POS_END, $key);
