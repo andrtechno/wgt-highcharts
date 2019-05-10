@@ -79,7 +79,14 @@ class Highcharts extends Widget
         if (in_array('modules/exporting', $this->scripts)) {
             $view->registerJsFile($assetsUrl . "/modules/exporting.js", ['position' => View::POS_END,'depends' => 'panix\ext\highcharts\HighchartsAsset']);
             $view->registerJsFile($assetsUrl . "/modules/export-data.js", ['position' => View::POS_END,'depends' => 'panix\ext\highcharts\HighchartsAsset']);
+        }
 
+        if (isset($this->options['drilldown']) || in_array('modules/drilldown', $this->scripts)) {
+            $view->registerJsFile($assetsUrl . "/modules/drilldown.js", ['position' => View::POS_END,'depends' => 'panix\ext\highcharts\HighchartsAsset']);
+        }
+
+        if (in_array('modules/data', $this->scripts)) {
+            $view->registerJsFile($assetsUrl . "/modules/data.js", ['position' => View::POS_END,'depends' => 'panix\ext\highcharts\HighchartsAsset']);
         }
 
         // highcharts and highstock can't live on the same page
