@@ -1,21 +1,13 @@
 <?php
 
-/**
- * HighmapsWidget class file.
- *
- * @author Milo Schuman <miloschuman@gmail.com>
- * @link https://github.com/miloschuman/yii-highcharts/
- * @license http://www.opensource.org/licenses/mit-license.php MIT License
- * @version 4.0.4
- */
-require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'HighchartsWidget.php');
+namespace panix\ext\highcharts;
 
 /**
  * @see HighchartsWidget
  *
  * In the likely event that you would like to use
  */
-class HighmapsWidget extends HighchartsWidget
+class HighmapsWidget extends Highcharts
 {
 
     protected $_constr = 'Map';

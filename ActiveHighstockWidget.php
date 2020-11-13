@@ -1,5 +1,7 @@
 <?php
 
+namespace panix\ext\highcharts;
+
 /**
  * ActiveHighstockWidget class file.
  *
@@ -9,7 +11,6 @@
  * @version 4.0.4
  */
 
-require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'HighstockWidget.php');
 
 /**
  * Usage:
@@ -49,7 +50,7 @@ class ActiveHighstockWidget extends HighstockWidget
     /**
      * Pass in a data provider that we will turn into the series
      *
-     * @var CDataProvider
+     * @var DataProvider
      */
     public $dataProvider;
 
@@ -134,12 +135,12 @@ class ActiveHighstockWidget extends HighstockWidget
      */
     protected function processData($row, $batch)
     {
-        if(!is_array($batch['data'])) {
+        if (!is_array($batch['data'])) {
             return array($this->processDataValue($row[$batch['data']]));
         }
 
         $items = array();
-        foreach($batch['data'] as $item) {
+        foreach ($batch['data'] as $item) {
             $items[] = $this->processDataValue($row[$item]);
         }
         return $items;
