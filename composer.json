@@ -3,7 +3,7 @@
     "description": "Widget highcharts",
     "keywords": ["pixelion-cms", "extension", "widget", "highcharts"],
     "homepage": "https://github.com/andrtechno/wgt-highcharts",
-    "type": "yii2-extension",
+    "type": "pixelion-component",
     "license": "MIT",
     "authors": [
         {
