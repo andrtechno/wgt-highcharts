@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "bower-asset/highcharts" : "^9"
+        "bower-asset/highcharts" : "^v9"
     },
     "autoload": {
         "psr-4": {
