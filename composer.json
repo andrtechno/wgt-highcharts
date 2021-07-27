@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "bower-asset/highcharts" : "v8.2.2"
+        "bower-asset/highcharts" : "^v9.1.0"
     },
     "autoload": {
         "psr-4": {
